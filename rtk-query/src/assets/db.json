@@ -1,0 +1,22 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "userId": 23,
+      "title": "Post 1",
+      "body": "some random posters"
+    },
+    {
+      "id": 2979.5967625114185,
+      "title": "sad",
+      "body": "dsa",
+      "userId": 7199.017644705244
+    },
+    {
+      "id": 600.8371637183641,
+      "title": "sd",
+      "body": "sd",
+      "userId": 810.2541601093627
+    }
+  ]
+}

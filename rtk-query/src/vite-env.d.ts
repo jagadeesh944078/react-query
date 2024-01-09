@@ -1,0 +1,8 @@
+/// <reference types="vite/client" />
+
+interface Post {
+  id: number;
+  userId: number;
+  title: string;
+  body: string;
+}

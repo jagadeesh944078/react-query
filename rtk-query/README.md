@@ -1,0 +1,9 @@
+- first installed using npm i create vite@latest
+- second installed json server and created db.json under assets folder
+- third added below line in package.json
+-     "server": "json-server --watch src/assets/db.json --port 8000"
+- fourth running using command npm run server
+- installed below command for reduxtoolkit and react-redux
+-     npm install @reduxjs/toolkit react-redux
+- removed existing code in App.tsx
+- next created redux folder and file api.ts
