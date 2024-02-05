@@ -29,3 +29,40 @@ body {
   text-transform: uppercase;
   text-align: center;
 }
+
+div > form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+div > form > button {
+  cursor: pointer;
+  padding: 8px;
+  border: none;
+  background-color: darkblue;
+  border-radius: 5px;
+  font-size: 15px;
+  color: white;
+  text-transform: uppercase;
+}
+
+.postbox {
+  padding: 10px;
+  border: none;
+  border-bottom: 2px solid grey;
+  border-radius: 5px;
+  font-size: 18px;
+}
+
+.tags {
+  display: flex;
+  justify-content: space-around;
+}
+
+.pages {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
