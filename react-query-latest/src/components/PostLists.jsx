@@ -16,11 +16,14 @@ const PostLists = () => {
     isLoading,
     isError,
     error,
-    // hasNextPage,
-    // fetchNextPage,
-  } = useQuery({
-    queryKey: ["posts", { page }],
-    queryFn: () => fetchPosts(page),
+    hasNextPage,
+    fetchNextPage,
+  } = useInfiniteQuery({
+    queryKey: ["posts"],
+
+    queryFn: ({ pageParam = 1 }) => fetchPosts(pageParam),
+
+    getNextPageParam: (data) => data.next,
     // getNextPageParam: (postData) => postData.next,
 
     // staleTime: 1000 * 60 * 5,
@@ -31,6 +34,8 @@ const PostLists = () => {
     //it will be fetched every 5 seconds
     // refetchInterval: 1000 * 5,
   });
+
+  console.log(postData);
 
   const { data: tagsData } = useQuery({
     queryKey: ["tags"],
@@ -116,15 +121,17 @@ const PostLists = () => {
       {isLoading && isPending && <p>Loading...</p>}
       {isError && <p>{error?.message}</p>}
       {isPostError && <p onClick={() => reset()}>Unable to Save Data</p>}
-      {postData?.data?.map((post) => (
-        <div key={post.id} className="post">
-          <div>{post.title}</div>
-          {post.tags.map((tag) => (
-            <span key={tag}>{tag}</span>
-          ))}
-        </div>
-      ))}
-      {/* {hasNextPage && <button onClick={fetchNextPage}>Load More</button>} */}
+      {postData?.pages
+        .flatMap((data) => data.data)
+        .map((post) => (
+          <div key={post.id} className="post">
+            <div>{post.title}</div>
+            {post.tags.map((tag) => (
+              <span key={tag}>{tag}</span>
+            ))}
+          </div>
+        ))}
+      {hasNextPage && <button onClick={fetchNextPage}>Load More</button>}
     </div>
   );
 };
